@@ -5,4 +5,4 @@ button.addEventListener("click",
   var writable = await fileHandle.createWritable();
   await writable.write(window.prompt("書き込むの入力しろ"));
   await writable.close();
-});
+}); 
