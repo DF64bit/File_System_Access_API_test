@@ -1,16 +1,8 @@
-window.onload = function() {
-    // store a reference to our file handle
-let fileHandle;
-
-async function getFile() {
-  // open file picker
-  [fileHandle] = await window.showOpenFilePicker();
-
-  if (fileHandle.kind === 'file') {
-    window.alert("ああ、これはファイルですね。fcbd");
-  } else if (fileHandle.kind === 'directory') {
-    window.alert("ああ、これはディレクトリですね。fcbd");
-  }
-
-}
-}
+var button = document.querySelector(".openfile");
+button.addEventListener("click",
+(e)=>{
+  var [fileHandle] = await showOpenFilePicker({});
+  var writable = await fileHandle.createWritable();
+  await writable.write(window.prompt("書き込むの入力しろ"));
+  await writable.close();
+});
